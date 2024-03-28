@@ -1,0 +1,191 @@
+-- SETTINGS
+
+-- set Tempo ~ 130bpm
+setcps (160/60/4)
+
+---------------------------------------------------------------------------------------
+
+--TIDAL DRUMS
+d7 $ s "if" <| n (run 4) # pan saw
+ 
+d4 $ s "if" <| n (run 8)   
+d5 $ s "if" <| n (run 4) -- five bitcrushed hits
+d6 $ s "if" <| n (run 2) -- five bitcrushed hits
+d7 $ s "if" <| n (run 1.15)
+d15 $ s "if" <| n (run 4) -- five bitcrushed hits 
+
+hush
+
+d1 $ every 2 (fast 2) $ s "hoover" <| n (shuffle 6 $ run 6) -- six loud hoover bass soundss
+d1 $ s "drum" |+| n "1[0 3] 2[1 3 8] 3" |+| n "[2 3[2 1] 4]*2"
+hush
+d13 $ n "<c [<4,6?> <2?,1?>]*2 <8,6>*4,9*3,f*<4,2>" # s "gretsch"
+d2 $ n "<c [<4,6?> <2?,1?>]*2 <8,6>*4,9*3,f" # s "hc"
+d3 $ n "c'minorSixNine*4 h'm7s9*1 h'Sus2 [a'ed]" # s "sine"
+mute d3
+
+#################################
+#################################
+hush
+d2 $ s "peri" <| n (run 16) -- collection of synth hits, ok
+d16 $ slow 4 $ crush 2 $ s "pluck" <| n (run 32) -- pizz cb notes various, 0 is B (ish)
+
+panic
+hush
+d1 $ s "breaks"
+d1 $ s "bd"
+
+mute 1
+unmute 1
+
+d9 $ s "jungle" <| n (run 13) -- quiet 'jungle' kit, amen-ish
+d5 $ s "ifdrums" <| n "<2,4>!<2,4> <1,6>!4 2!4" # pan isaw*sin # crush sin
+
+d2 $ s "[<hh*4 hh(3,8)? hh:7*2>, bd*4,<cp*2? sn:4*5>,<hh:6*16? hh:6*6 [hh]>,<bass*2 bass:2*6>]" 
+mute 1
+unmute 1
+
+d3 $ s "dfam:8*2"
+mute 1
+unmute 1
+
+d2 $ s "made:?*<2 5>" #gain 0.6 # room 0.3 # size 0.4
+mute 1
+unmute 1
+
+hush
+
+d3 $ s "jazz:3*16" #gain 0.6
+mute 1
+unmute 1
+
+d5 $ s "industrial:2?*< 16 2 8>" #gain 0.6 # room 0.1 # size 0.4
+mute 1
+unmute 1
+
+d4 $ s "909*<8 2 ~ 4  ~ >" # gain < 0.5 0.2 0.9 > # lpf 80
+mute 1
+unmute 1
+
+-- nice breaks
+d3 $ s "[masu:3,masu:[1 [2] 6[0 3]],masu:[3[4 1] 2]1]" #pan tri # lpf (slow 1 $ range 100 3000 $ sine) #crush 18 # room 0.2 #size 0.2
+hush
+
+jux rev $ loopAt 1 $ chop 8 $ s "break" #  gain 1.1
+d4 $ s ""
+
+hush
+
+d5 $ s "[909:5 808:10]*4"  # gain 0.75  # shape <0.99 0.66> # crush <2 3> # room 0.8 # size 0.7 # dry 0.5
+d6 $ s "808*<2?>" # n "3 [5 8*2|6*<3?>] [4 3 2 1] [1 4 5]*4 [2 6]" # crush "9" # room "0.2" # size 0.7 # lpf (slow 4 $ range 200 5000 $ sine) 
+d7 $ s "[909*4?,cp(3?,4?)]*<2? 4? 6?>" # crush "<5 8 9>" # gain "0.9" # room "0.1" # size 0.5 
+d8 $ s "[909:?*<4?>,808:?(8,16),808:?(2?,8?,4?),909:?*<4>,808:?(16?,9),808:<?>(6,5,2)]" #pan tri #speed (slow 1 isaw) # lpf (slow 2 $ range 2000 7000 $ isaw * sin * cos) # bpf (slow 3 $ range 100 2000 $ sin)
+
+hush
+
+---------------------------------------------------------------------------------------
+-- snippets:
+-- # bpf (slow 10 $ range 100 20000 $ sine)
+-- # n "2 7 [1 2] 1 2"
+hush 
+
+
+
+
+---------------------------------------------------------------------------------------
+-- MIDI  
+
+Aestethic Strategys of Systems 
+
+hush
+d1 $ n "<< a2 f4 c2?>>*<<2?<0.66 0.4> 0.1?> 0.12? 0.2?>" # s "mydevice" # midichan 1
+d1 $ n "<<c3 <b a e> a2 f4 c2?>>*<<2?<0.66 0.4> 0.1?> 0.12? 0.2?>" # s "mydevice" # midichan 0
+d1 $ n "<[c2,d?,e3?,f g4 a6<c a f5 c2?>]>*<<2.15 3.5> 1?>" # s "mydevice" # midichan 0
+d1 $ n "<[c2,d,e4,f g6<c a f3 c2?>]>*<<2> 1?>" # s "mydevice" # midichan 0
+d1 $ n "<[c2,d,e,f<c a f>]>*<4 7? 47? <2 14 19 2> 30?>" # s "mydevice" # midichan 0
+d1 $ n "<[c2,d,a3,f5<c a<a h8 c2>>]>*<4 7? 47? <2 14 19 2> 30?>" # s "mydevice" # midichan 0
+d1 $ n "<[c2,d,e,f<c d e <d a f> a>]>*<5 21 6 7? 8>" # s "mydevice" # midichan 0
+
+hush
+d2 $ n "<[ c2 a6 e3? g5 a6]>*< 0.11 2 0.5? 0.1? 0.2? 0.2345>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g4 g3?< g8 <a2 c> e> e5?]>*< 1.5? 1.75?>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g4 g3?< a2 c e> e5?]>*<  0 1?>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g4 g3? e8?]>*<1? 2? 1? 3?>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g7 [g3,c4]<c g<e f>>]>*<3? 1? 2? 5?>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g7 e7]>*<4 5>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g7 e7 e5,e g7 c3]>*<3 5>" # s "mydevice" # midichan 1
+d2 $ n "<[c6 c4 g5 g7]>*2" # s "mydevice" # midichan 1
+d2 $ n "<[c6 g7 <c3 f4 f7>]>*2 1 4  0 2 0 9 5" # s "mydevice" # midichan 1
+
+d3 $ n "<g2 f3 g2>*<0.1 0.2 0.35>" # s "mydevice" # midichan 2
+d3 $ n "<c2 a1>*<1 2 5>" # s "mydevice" # midichan 2
+d3 $ n "<g3 c4>*<4? 2?>" # s "mydevice" # midichan 2
+d3 $ n "<[[c d f?]]>*<2? 3? 9? 1? 2 2?>" # s "mydevice" # midichan 2
+d3 $ n "<[[c d f? g? e <a e g>]]>*<2? 3? 2 93? 10? 5 2 2?>" # s "mydevice" # midichan 2
+
+
+d4 $ n "<c6 a3>"*<4? < 8? 16?> 6? 5.5? 33?> # s "mydevice" # midichan 3
+d4 $ n "<c2 a3 g1>"*<1? < 3? 2?>< 1? 5? 2?> # s "mydevice" # midichan 3
+d4 $ n "<[f5[c <c g a> f?],<c d f e>]>*<15? <40? 90?> 10? 20 2>" # s "mydevice" # midichan 3
+d4 $ n "<[c2 d a3 f5<c h a<a h3 c2>>]>*<40 700? 47? <2 14 19 2> 30?>" # s "mydevice" # midichan 3
+
+---------------------------------------------------------------------------------------------------------
+-- Ableton
+
+d1 $ n "<c3 e3 >*<8 4>" # s "mydevice" # midichan 0
+
+d1 $ n "<c3e3 >*<8? 1?>" # s "mydevice" # midichan 2
+d3 $ n "<a3 a5 >*<2? 1?>" # s "mydevice" # midichan 3
+d2 $ n "<c3d3?f5c4?<a4g7>>*<0.33?,4? 1>" # s "mydevice" # midichan 4
+xfade 10 $ n "<e4f4a5? <a5? b4?>>*<2, 5? 9?>" # s "mydevice" # midichan 2
+d1 $  n "<c3 e3 >*<8 4>" # s "mydevice" # midichan 0
+
+
+d2 $ n "<a1,e3g>*<0 4? 7 2?>" # s "mydevice" # midichan 2
+d3 $ n "<a4 e6 f5,<e3 a8 e7 g5 g3>>*<0? 1?,3 2?>" # s "mydevice" # midichan 2
+hush
+-- SYNTH
+
+d1 $ n "<[400 500 800]*2" # s "mydevice" # midichan 1
+d1 $ n "<[[100*8 <200 <500 100>] [600 800]>]*<16,8,<2,5>>>" # s "mydevice" # midichan 1
+d1 $ n "<[c,d,e,<c d e>]*4>" # s "mydevice" # midichan 1
+d1 $ n "<[200 300*2 600*4 80*1 160*4 320*<2?,3 1000>]" # s "mydevice" # midichan 1
+d1 $ n "<[<240 230 245>]*16?>" # s "mydevice" # midichan 1
+d1 $ n "<[0 2 7 4 ]*[<32 8>, 4 <[2 16]>]>" # s "mydevice" midichan 1
+hush
+
+
+
+-- Ableton 808
+
+d1 $ n "<c d>"*8 # s "mydevice" # midichan 0
+
+-- DRUMS
+d2  $ n "<[-12*4,119*8,23*4,60*16,40*3,120*4]>" # s "mydevice"  # midichan 10
+d2 $ n "<[1*16,4*1,12*3,15*2,-8*2,-12*4]>" # s "mydevice" # midichan 10
+d2 $ n "<[2*4,9*<1?,32?,6?>,<4*<2?,8?> <8,23>*<16?,5?,13?>>,[<9,7,12>*<1?,2?,3?>,-6*<4?,5?>],10*<4?,2?>,12*<6?,8?>]>" # s "mydevice" # midichan 10
+d2 $ n "<[[<9,[1,6?],[2,4,8,9,12?]>*2,<1>*<4,8,9,[2,6?,9?]>],-7*<4,5?>,12*<6,7?,9?>]>" # s "mydevice" # midichan 10
+d2 $ n "<[[<90,[20?,6?],[10?,[40?,8?,9?],24?]>*2,<1?,4?>*<4?,6?,7?,[1,8?,12?]>],<<3,7?,8?,9?>,<3?,4?>,10?,[2?,8?,11?,21?]?>*<4?,5?>,12?*<6,7?,9?>]>" # s "mydevice" # midichan 10
+d2 $ n "<<90,[20*5,6*3,1*2*<6,9,2>,<3*1,7>]*2,[10?,[12,8,9]*4,24]*<2,1>>>" # s "mydevice" # midichan 10
+d2 $ n "<90*<4 8 16>,4 9 8 10 11*< 2 4 5 7>>" # s "mydevice" # midichan 10 # amp (rand*16) 
+hush
+d2 $ n "<-30*4,-40*4,14*<2,6>,-35*8[4,2*5,8*16 [2,3,14*<2,3>] 3*7]> " # s "mydevice" # midichan 10
+d2 $ n "<4*<3>,<3? 4>*<4 5>,8*12?,3*4,3*4.5,9*<16,12,3,4>>" # s "mydevice" # midichan 10
+hush
+d2 $ n "<90*<3 [1.25,3]*(3,4)>,21*<16 16.2 6,16.25 16.4>,4*<5 24.1 24.2 2>>" # s "mydevice" # midichan 10
+d2 $ n "<<<5,[9*0.25,[23,67*2.165],4*2.75]>*<4,6?>,<12,9*4>*<4?,<14*[6.5?*3?],12?>>>>" # s "mydevice" # midichan 10
+hush
+
+-- CC LFO
+
+d8 $ n # ccn 64 # ccv (range 0 127 $ slow 4 sine)  # s "mydevice"
+d9 $ n # ccn 7 # ccv (range 0 127 $ slow 5 sine)  # s "mydevice"
+d10 $ n # ccn 1 # ccv (range 0 127 $ slow 5 sine)  # s "mydevice"
+
+-- STACK
+
+d2 $ fast 8 $ stack [
+  ccn 30 # ccv (range 0 127 $ slow 30 sine),
+  ccn 31 # ccv "[0 70 30 110]/3",
+  ccn 32 # ccv 10
+  ] # s "mydevice"

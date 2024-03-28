@@ -1,0 +1,31 @@
+
+
+d1 $ splice 8 " 1 3 4 2 8 7 7 6 " $ s "808:3" # gain 1.1
+d2 $ splice 2 " 1 3 4 6 " $ s "808:2" # gain 1.1
+d3 $ splice 16 "1 2" $ s "bd" # gain 1.1
+
+panic
+
+hush
+d4 $ fast "<2,4?,8>" $ randslice 8 $ s "909:2" # gain 1.5
+d5 $ fast "<8,16>" $ randslice "<16?,4?>" $ s "808:1" # gain 1.2
+d6 $ fast "<8,4>" $ randslice "<4,2,3>" $ s "sd:1" # gain 1.1
+d7 $ fast "<2>" $ randslice "4" $ s "808sd" # gain 1.1
+d8 $ fast "<c f g>" $ randslice "<2,4,6>" $ s "bass1" # gain 1.1
+d9 $ s "glitch" <| n (run 2)
+d10 $ fast "<8,16>" $ randslice "4,8" $ s "jazz:5*4" # gain sin
+d11 $ slow "<4,8,2>" $ s "moog" # gain 0.9
+d12 $ n "<[2*<2,3>,10*<8,4>,2*<16>]>" # s "sequential" # gain sin
+d12 $ n "<2,4,6>" # s "vow" 
+d13 $ n "<1.25,1,5>" # s "vow:2"  
+hush
+
+panic
+
+d1 $ s "east(4*<3,8>,7*<2,16,4>,5)*<4,8?>" # n (irand <1,3,2>) # gain sin
+d2 $ s "supertron" # octave 3 # accelerate "0.2"
+d12 $ jux rev $ chunk 4 (fast 2 . (|- n 12)) $ off 0.25 (|+ 7) $ struct (iter 4 "t(5,8)")$ n (scale "major" "0 .. 12") # sound "jungbass" # gain 0.6 # reverb 1
+hush
+
+
+panic 
